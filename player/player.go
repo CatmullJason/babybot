@@ -104,13 +104,13 @@ func AdjustVolumeTo(vol int) {
 }
 
 func AdjustVolume(){
-	if detection.GetCurrentAmplitude() < 0.015 {
+	if detection.GetCurrentAmplitude() < 0.085 {
 		AdjustVolumeTo(35)
 	}
-	if detection.GetCurrentAmplitude() > 0.015 {
+	if (detection.GetCurrentAmplitude() > 0.085) && (detection.GetCurrentAmplitude() < 0.1) {
 		AdjustVolumeTo(50)
 	}
-	if detection.GetCurrentAmplitude() > 0.02 {
+	if detection.GetCurrentAmplitude() > 0.1 {
 		AdjustVolumeTo(65)
 	}
 }

@@ -46,7 +46,7 @@ func GetBaseline() float64 {
 }
 
 func RunDetection() float64 {
-	cmd := "arecord -qd 1 volt && sox volt -n stat &> volt.d && sed '4q;d' volt.d"
+	cmd := "sox -qd -G volt.wav trim 0 1 && sox volt.wav -n stat &> volt.d && sed '4q;d' volt.d"
 
 	out, err := exec.Command("bash","-c",cmd).Output()
 	if err != nil {
@@ -72,7 +72,7 @@ func RunDetection() float64 {
 func IsBabyCry(amp float64) bool {
 	fmt.Println(amp)
 
-	if amp > 0.023 {
+	if amp > 0.2 {
 		LastRecordedAmplitude = amp
 		return true
 	}
