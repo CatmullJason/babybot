@@ -1,0 +1,1 @@
+arecord -qd 1 volt && sox volt -n stat &> volt.d && sed '4q;d' volt.d
